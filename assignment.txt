@@ -1,0 +1,76 @@
+For this assignment you need to create a database called assignment and collection called users that has following fields :-
+
+first_name
+
+last_name
+
+email
+
+gender
+
+ip_address
+
+age
+
+
+Ans: In order to create a database: use assignment
+
+Note: We have rows and column in mySQL and we have documents and collection in Mongo (or NoSQL)
+
+show collections: to show all the collections if exist inside the database.
+
+How to create collections?
+
+db.createCollection(users)  // users is the name of collection here.
+
+How to insert data in collection created in Mongo?
+
+Ans: By two different ways that is by insert one by one and insertMany.
+
+Command: db.users.insert({"firstName": "John", "lastName": "chedha", "age": "20", "email": "rajnkumar@gmail.com", "gender": "male", "ip_address": "192.168. 1.1"})
+
+Second Method: InsertMany as shown:
+Command: db.users.insertMany([{"firstName": "John", "lastName": "chedha", "age": "20", "email": "rajnkumar@gmail.com", "gender": "male", "ip_address": "192.168. 1.1"},
+ {"firstName": "John", "lastName": "chedha", "age": "20", "email": "rajnkumar@gmail.com", "gender": "male", "ip_address": "192.168. 1.1"}, {"firstName": "John", "lastName": "chedha", "age": "20", "email": "rajnkumar@gmail.com", "gender": "male", "ip_address": "192.168. 1.1"}])
+
+
+Ques. Select all the documents in the users collection using find and also a single document using findOne?
+
+Ans: In order to select everything inside the collection command is as follows:
+
+db.users.find({})
+
+In order to select a particular object with some specific information, command is as follows:
+
+db.users.findOne({"firstName": "John"})
+
+=> if multiple objects with the same, it will show all data with same firstName.
+
+
+Ques. Update at least 3 documents using update and updateMany?
+
+Ans: Update function asks for two different objects, first one is for target somne kind of id or thongs that needs to be updated, and what to update with as second object.
+
+Command: db.users.update({"_id": ObjectId("54657667dfds474sdaf")}, {set: "firstName": "Rajan"})
+
+for updateMany: InsertMany => with not using object id instead use with comman parameters
+
+command: db.users.update({"firstName": "John"}, {set: "firstName": "Rohit"})
+=> This command will now update all the documents whose first name Rajan to Rohit.
+
+
+Ques: Delete documents using remove, remove that will remove just 1 document, deleteOne, deleteMany?
+
+Ans: db.users.remove({"firstName": "Rajan"}) => This will delete all the documents whose first name is Rajan.
+
+For removing one item, best practise is to use id to remove.
+
+db.users.remove("_id": ObjectId("245345dsfds4455"))
+
+db.users.remove({"firstName": "John"}, 1) => to remove only one user having name as John.
+
+Ques: Then delete the database ?
+
+Ans: In order to delete the database write command as shown.
+db.dropDatabase()
+
